@@ -1,8 +1,19 @@
 [tool.poetry]
-name = "lessa"
+name = "dummy_lessa_package"
 version = "0.1.0"
-description = ""
+description = "dummy"
 authors = ["heitorlessa <lessa@amazon.co.uk>"]
+classifiers=[
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+]
+readme = "README.md"
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.7"
