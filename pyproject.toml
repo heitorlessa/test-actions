@@ -1,11 +1,12 @@
 [tool.poetry]
 name = "lessa"
-version = "v0.9.5"
+version = "0.1.0"
 description = ""
 authors = ["heitorlessa <lessa@amazon.co.uk>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+aws-lambda-powertools = "^0.9.4"
 
 [tool.poetry.dev-dependencies]
 
