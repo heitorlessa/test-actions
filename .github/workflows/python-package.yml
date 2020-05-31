@@ -56,7 +56,7 @@ jobs:
 
     - name: Build wheel
       run: |
-        CIBW_BUILD=cp36-* python -m cibuildwheel --output-dir wheelhouse
+        CIBW_BUILD="cp36-* cp37-* cp38-*" python -m cibuildwheel --output-dir wheelhouse
 
     - uses: actions/upload-artifact@v1
       with:

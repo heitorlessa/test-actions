@@ -16,7 +16,7 @@ readme = "README.md"
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.6"
 aws-lambda-powertools = "^0.9.4"
 
 [tool.poetry.dev-dependencies]
