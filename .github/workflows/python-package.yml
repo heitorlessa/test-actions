@@ -2,6 +2,7 @@
 # [x] Fetch git tag
 # [ ] Poetry cache
 # [ ] Ciwheel
+# [ ] Publish wheels PyPi
 
 name: Dummy action
 
@@ -44,7 +45,9 @@ jobs:
 
     - name: Install cibuildwheel
       run: |
-        python -m pip install cibuildwheel~=1.4.2
+        # python -m pip install cibuildwheel~=1.4.2
+        # Run patched version that supports pyproject.toml presence only
+        python -m pip install git+https://github.com/heitorlessa/cibuildwheel.git@improv/support-pyproject-poetry
 
     - name: Install Visual C++ for Python 2.7
       if: startsWith(matrix.os, 'windows')
