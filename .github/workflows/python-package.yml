@@ -56,7 +56,10 @@ jobs:
 
     - name: Build wheel
       run: |
-        CIBW_BUILD="cp36-* cp37-* cp38-*" python -m cibuildwheel --output-dir wheelhouse
+        # https://github.com/pyca/cryptography/issues/5101
+        export CIBW_BEFORE_BUILD="pip install pip --upgrade"
+        export CIBW_BUILD="cp36-* cp37-* cp38-*"
+        python -m cibuildwheel --output-dir wheelhouse
 
     - uses: actions/upload-artifact@v1
       with:
