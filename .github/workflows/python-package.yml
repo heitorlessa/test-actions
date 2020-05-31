@@ -81,10 +81,7 @@ jobs:
           name: wheels
     - name: Check wheels
       run: |
-        ls -l wheels/*
-        ls -l wheels/wheelhouse/*
-        du -hs wheels/*
-        du -hs wheels/wheelhouse/*
+        ls -lh wheels/*
 
 # Poetry cache test
     # - name: Hello master
