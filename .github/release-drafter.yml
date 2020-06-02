@@ -26,6 +26,8 @@ tag-template: 'v$NEXT_PATCH_VERSION'
 template: |
   ## Changes
 
+  **[Human readable summary of changes]**
+  
   $CHANGES
 
   ## This release was made possible by the following contributors:
