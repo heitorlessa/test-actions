@@ -1,0 +1,31 @@
+change-template: "* $TITLE (#$NUMBER) by @$AUTHOR"
+categories:
+  - title: 'Breaking Changes'
+    labels:
+      - 'breaking-change'
+  - title: '🌟Non-Breaking Changes'
+    labels:
+      - 'major'
+  - title: '⚙️ Minor Changes'
+    labels:
+      - 'feature'
+      - 'enhancement'
+  - title: '📜 Documentation updates'
+    labels:
+      - 'documentation'
+  - title: '🐛 Bug Fixes'
+    labels:
+      - 'bug'
+  - title: '🚒 Deprecations'
+    labels:
+      - 'deprecated'
+exclude-labels:
+  - 'skip-changelog'
+template: |
+  ## Changes
+
+  $CHANGES
+
+  ## This release was made possible by the following contributors:
+
+  $CONTRIBUTORS
