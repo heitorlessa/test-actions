@@ -13,9 +13,10 @@ categories:
   - title: '📜 Documentation updates'
     labels:
       - 'documentation'
-  - title: '🐛 Bug Fixes'
+  - title: '🐛 Bug and hot fixes'
     labels:
       - 'bug'
+      - 'fix'
   - title: '🚒 Deprecations'
     labels:
       - 'deprecated'
