@@ -43,33 +43,19 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Install cibuildwheel
+    - name: Install deps
       run: |
-        # python -m pip install cibuildwheel~=1.4.2
-        # Run patched version that supports pyproject.toml presence only
-        python -m pip install git+https://github.com/heitorlessa/cibuildwheel.git@improv/support-pyproject-poetry
-
-    - name: Install Visual C++ for Python 2.7
-      if: startsWith(matrix.os, 'windows')
-      run: |
-        choco install vcpython27 -f -y
+        pip install --upgrade pip poetry
+        poetry install
 
     - name: Build wheel
       run: |
-        # https://github.com/pyca/cryptography/issues/5101
-        # export CIBW_BEFORE_BUILD="pip install pip --upgrade"
-        # export CIBW_BUILD="cp36-* cp37-* cp38-*"
-        # export CIBW_SKIP="*-manylinux_i686 *-manylinux_aarch64 *-manylinux_ppc64le *-manylinux_s390x"
-        python -m cibuildwheel --output-dir wheelhouse
-      env:
-        CIBW_BEFORE_BUILD: "pip install pip --upgrade"
-        CIBW_BUILD: "cp36-* cp37-* cp38-*"
-        CIBW_SKIP: "*-manylinux_i686 *-manylinux_aarch64 *-manylinux_ppc64le *-manylinux_s390x"
+        poetry build -f wheel
 
     - uses: actions/upload-artifact@v1
       with:
         name: wheels
-        path: ./wheelhouse
+        path: ./dist
   
   publish:
     needs: build_wheels
