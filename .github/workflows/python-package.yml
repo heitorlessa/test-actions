@@ -43,7 +43,7 @@ jobs:
         python-version: [3.6, 3.7, 3.8]
     steps:
     - name: Setup tmate session
-      uses: mxschmitt/action-tmate@844b24ed1bd7254a15d60cd3385b67bc3cc276ee
+      uses: mxschmitt/action-tmate@ece3d66d6d54a01594acd0ee2e79d1bfb2df136d
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
