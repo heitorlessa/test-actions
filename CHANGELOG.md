@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.18] - 2020-06-05
+### Fixed
+- **Github Action** job needs syntax
+
 ## [0.9.17] - 2020-06-05
 ### Added
 - **Github Action** enforces tag release in sync
