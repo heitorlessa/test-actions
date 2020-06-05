@@ -35,7 +35,7 @@ jobs:
         grep ${LATEST_TAG} pyproject.toml
 
   build_wheels:
-    need: build # skip if build fails
+    needs: build # skip if build fails
     name: Build wheel on ${{ matrix.os }}
     runs-on: ubuntu-latest
     strategy:
