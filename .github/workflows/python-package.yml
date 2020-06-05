@@ -5,12 +5,11 @@
 name: Dummy action
 
 on:
-  push:
-    branches: [master]
-    tags: 
-      - v*
   release:
       types: [published]
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   build:
@@ -22,17 +21,18 @@ jobs:
       run: |
         echo ::set-env name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
         echo ::set-env name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
-    - name: Set latest tag found
-      run: |
-        export RELEASE_TAG_VERSION=${{ github.event.release.tag_name }}
-        echo ::set-env name=LATEST_TAG::${RELEASE_TAG_VERSION:1}
-    - name: Echo latest tag found
-      run: |
-        echo ${LATEST_TAG}
-    - name: Verify new version is also set in package and CHANGELOG
-      run: |
-        grep ${LATEST_TAG} CHANGELOG.md
-        grep ${LATEST_TAG} pyproject.toml
+        ls -l ./
+    # - name: Set latest tag found
+    #   run: |
+    #     export RELEASE_TAG_VERSION=${{ github.event.release.tag_name }}
+    #     echo ::set-env name=LATEST_TAG::${RELEASE_TAG_VERSION:1}
+    # - name: Echo latest tag found
+    #   run: |
+    #     echo ${LATEST_TAG}
+    # # - name: Verify new version is also set in package and CHANGELOG
+    # #   run: |
+    # #     grep ${LATEST_TAG} CHANGELOG.md
+    # #     grep ${LATEST_TAG} pyproject.toml
 
   build_wheels:
     needs: build # skip if build fails
@@ -42,6 +42,8 @@ jobs:
       matrix:
         python-version: [3.6, 3.7, 3.8]
     steps:
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@e2b9d8652c358cc72c0dea34ec27dcac08e45b20
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
