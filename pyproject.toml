@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dummy_lessa_package"
-version = "0.1.0"
+version = "0.9.17"
 description = "dummy"
 authors = ["heitorlessa <lessa@amazon.co.uk>"]
 classifiers=[
