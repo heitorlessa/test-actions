@@ -36,7 +36,6 @@ jobs:
     - name: Set latest tag found
       run: |
         echo ${{ github.event.release.tag_name }}
-        echo ${github.event.release.tag_name}
         echo ::set-env name=LATEST_TAG::${{ github.event.release.tag_name }}
     - name: Echo latest tag found
       run: |
