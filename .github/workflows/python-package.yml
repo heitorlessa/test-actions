@@ -34,6 +34,9 @@ jobs:
     # #     grep ${LATEST_TAG} CHANGELOG.md
     # #     grep ${LATEST_TAG} pyproject.toml
 
+# Env vars, source code are not shared between individual jobs
+# TODO - Bring set-env in both job_ids
+
   build_wheels:
     needs: build # skip if build fails
     name: Build wheel on ${{ matrix.os }}
@@ -42,13 +45,13 @@ jobs:
       matrix:
         python-version: [3.6, 3.7, 3.8]
     steps:
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@ece3d66d6d54a01594acd0ee2e79d1bfb2df136d
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@ece3d66d6d54a01594acd0ee2e79d1bfb2df136d
 
     - name: Install deps
       run: |
