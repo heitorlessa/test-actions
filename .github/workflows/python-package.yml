@@ -22,32 +22,25 @@ jobs:
       run: |
         echo ::set-env name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
         echo ::set-env name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
-    - name: Print source, tag, and branch
-      run: |
-        echo "Branch: ${SOURCE_BRANCH}"
-        echo "Tag: ${SOURCE_TAG}"
-    # - name: Extract tag name
-    #   id: tag
-    #   uses: actions/github-script@0.2.0
-    #   with:
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     script: |
-    #       return context.payload.ref.replace(/\/refs\/tags\//, '');
     - name: Set latest tag found
       run: |
         echo ${{ github.event.release.tag_name }}
-        echo ${github.event.release.tag_name}
-        echo ::set-env name=LATEST_TAG::${{ github.event.release.tag_name }}
+        echo ::set-env name=LATEST_TAG::${{ github.event.release.tag_name:1 }}
     - name: Echo latest tag found
       run: |
         echo ${LATEST_TAG}
+    - name: Ensure version changes are in CHANGELOG
+      run: |
+        grep ${LATEST_TAG} CHANGELOG.md
+    - name: Ensure version changes are in pyproject.toml
+      run: |
+        grep ${LATEST_TAG} pyproject.toml
 
   build_wheels:
     name: Build wheel on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: ubuntu-latest
         python-version: [3.6, 3.7, 3.8]
     steps:
     - uses: actions/checkout@v2
