@@ -1,8 +1,6 @@
 
 # [x] Fetch git tag
 # [ ] Poetry cache
-# [ ] Ciwheel
-# [ ] Publish wheels PyPi
 
 name: Dummy action
 
@@ -11,8 +9,8 @@ on:
     branches: [master]
     tags: 
       - v*
-#   release:
-#       types: [published]
+  release:
+      types: [published]
 
 jobs:
   build:
@@ -28,6 +26,21 @@ jobs:
       run: |
         echo "Branch: ${SOURCE_BRANCH}"
         echo "Tag: ${SOURCE_TAG}"
+    # - name: Extract tag name
+    #   id: tag
+    #   uses: actions/github-script@0.2.0
+    #   with:
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}
+    #     script: |
+    #       return context.payload.ref.replace(/\/refs\/tags\//, '');
+    - name: Set latest tag found
+      run: |
+        echo ${{ github.event.release.tag_name }}
+        echo ${github.event.release.tag_name}
+        echo ::set-env name=LATEST_TAG::${{ github.event.release.tag_name }}
+    - name: Echo latest tag found
+      run: |
+        echo ${LATEST_TAG}
 
   build_wheels:
     name: Build wheel on ${{ matrix.os }}
