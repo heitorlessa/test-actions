@@ -29,14 +29,13 @@ jobs:
     - name: Echo latest tag found
       run: |
         echo ${LATEST_TAG}
-    - name: Ensure version changes are in CHANGELOG
+    - name: Verify new version is also set in package and CHANGELOG
       run: |
         grep ${LATEST_TAG} CHANGELOG.md
-    - name: Ensure version changes are in pyproject.toml
-      run: |
         grep ${LATEST_TAG} pyproject.toml
 
   build_wheels:
+    need: build # skip if build fails
     name: Build wheel on ${{ matrix.os }}
     runs-on: ubuntu-latest
     strategy:
