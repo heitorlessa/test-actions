@@ -1,0 +1,14 @@
+{
+	"auth": {
+		"cognitocd90cfec": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"analytics": {
+		"pythondocs": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

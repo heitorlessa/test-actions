@@ -1,0 +1,21 @@
+{
+    "appName": "pythondocs",
+    "roleName": "pinpointLambdaRole3047ebde",
+    "cloudformationPolicyName": "cloudformationPolicy3047ebde",
+    "cloudWatchPolicyName": "cloudWatchPolicy3047ebde",
+    "pinpointPolicyName": "pinpointPolicy3047ebde",
+    "authPolicyName": "pinpoint_amplify_3047ebde",
+    "unauthPolicyName": "pinpoint_amplify_3047ebde",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}
