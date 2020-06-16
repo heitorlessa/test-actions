@@ -19,6 +19,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@ece3d66d6d54a01594acd0ee2e79d1bfb2df136d
 
