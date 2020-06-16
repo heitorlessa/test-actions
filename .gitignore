@@ -1,1 +1,17 @@
 dist
+#amplify
+docs/amplify/\#current-cloud-backend
+docs/amplify/.config/local-*
+docs/amplify/mock-data
+docs/amplify/backend/amplify-meta.json
+docs/amplify/backend/awscloudformation
+docs/build/
+docs/dist/
+docs/node_modules/
+aws-exports.js
+docs/awsconfiguration.json
+docs/amplifyconfiguration.json
+docs/amplify-build-config.json
+docs/amplify-gradle-config.json
+docs/amplifytools.xcconfig
+docs/amplify/team-provider-info.json
