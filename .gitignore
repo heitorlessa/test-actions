@@ -14,4 +14,4 @@ docs/amplifyconfiguration.json
 docs/amplify-build-config.json
 docs/amplify-gradle-config.json
 docs/amplifytools.xcconfig
-docs/amplify/team-provider-info.json
+# docs/amplify/team-provider-info.json
