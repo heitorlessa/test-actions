@@ -22,6 +22,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12'
+    - name: configure amplify
+      uses: ambientlight/amplify-cli-action@a4c938d5b612374c71a40daf99d88df342db2187
+      with:
+        amplify_command: configure
+        amplify_env: main
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AMPLIFY_AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AMPLIFY_AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: eu-west-1
     - name: Setup tmate session
       uses: mxschmitt/action-tmate@ece3d66d6d54a01594acd0ee2e79d1bfb2df136d
-
